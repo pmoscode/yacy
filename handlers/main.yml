@@ -1,0 +1,5 @@
+---
+- name: restart yacy
+  service:
+    name: "{{ yacy_service }}"
+    state: restarted

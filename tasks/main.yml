@@ -1,0 +1,69 @@
+---
+- name: Get info for folder /usr/share/man/man1
+  stat:
+    path: /usr/share/man/man1
+  register: man_dir_stat
+
+- name: Ensure folder /usr/share/man/man1 exists
+  file:
+    path: /usr/share/man/man1
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  when: not man_dir_stat.stat.exists
+
+- name: Install OpenJDK Java 8 headless
+  apt:
+    name: openjdk-8-jre-headless
+    update_cache: yes
+    state: present
+
+- name: Ensure Yacy group exists
+  group:
+    name: "{{ yacy_group }}"
+    state: present
+
+- name: Ensure Yacy user exists
+  user:
+    name: "{{ yacy_user }}"
+    shell: "{{ yacy_user_shell }}"
+    group: "{{ yacy_group }}"
+    state: present
+
+- name: Ensure {{ yacy_install_dir }} exists
+  file:
+    name: "{{ yacy_install_dir }}"
+    owner: "{{ yacy_user }}"
+    group: "{{ yacy_group }}"
+    mode: 0755
+    state: directory
+
+- name: Download and unarchive Yacy
+  unarchive:
+    src: "{{ yacy_download_url }}"
+    dest: "{{ yacy_install_dir }}"
+    owner: "{{ yacy_user }}"
+    group: "{{ yacy_group }}"
+    remote_src: true
+    extra_opts: "--strip-components=1"
+
+#- name: Modify port
+#  lineinfile:
+#    path: "{{ yacy_install_dir }}/.env"
+#    regexp: "PORT="
+#    line: "PORT={{ yacy_port }}"
+
+- name: Write Systemd Unit file
+  template:
+    src: yacy.service.j2
+    dest: "/etc/systemd/system/{{ yacy_service }}.service"
+    mode: 0755
+  notify:
+    - restart yacy
+
+- name: Ensure Yacy is started and enabled
+  service:
+    name: "{{ yacy_service }}"
+    state: started
+    enabled: true
