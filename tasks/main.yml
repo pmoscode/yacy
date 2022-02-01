@@ -1,4 +1,18 @@
 ---
+- name: Get info for folder /usr/share/man/man1
+  stat:
+    path: /usr/share/man/man1
+  register: man_dir_stat
+
+- name: Ensure folder /usr/share/man/man1 exists
+  file:
+    path: /usr/share/man/man1
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  when: not man_dir_stat.stat.exists
+
 - name: Install OpenJDK Java 8 headless
   apt:
     name: openjdk-8-jre-headless
@@ -32,12 +46,13 @@
     owner: "{{ yacy_user }}"
     group: "{{ yacy_group }}"
     remote_src: true
+    extra_opts: "--strip-components=1"
 
-- name: Modify port
-  lineinfile:
-    path: "{{ yacy_install_dir }}/.env"
-    regexp: "PORT="
-    line: "PORT={{ yacy_port }}"
+#- name: Modify port
+#  lineinfile:
+#    path: "{{ yacy_install_dir }}/.env"
+#    regexp: "PORT="
+#    line: "PORT={{ yacy_port }}"
 
 - name: Write Systemd Unit file
   template:
