@@ -3,5 +3,4 @@
   hosts: all
 
   roles:
-#    - role: pmoscode.yacy
-    - role: yacy
+    - role: pmoscode.yacy
