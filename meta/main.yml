@@ -14,14 +14,8 @@ galaxy_info:
         - focal
         - bionic
 
-    - name: Debian
-      versions:
-        - bullseye
-        - buster
-
   galaxy_tags:
     - ubuntu
-    - debian
     - yacy
     - search
     - distributed
