@@ -65,5 +65,5 @@
 - name: Ensure Yacy is started and enabled
   service:
     name: "{{ yacy_service }}"
-    state: "{{ yacy_service_state }}"
+    state: restarted
     enabled: true
