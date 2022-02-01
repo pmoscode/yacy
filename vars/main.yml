@@ -1,0 +1,4 @@
+---
+yacy_version: "{{ yacy_version_major }}_{{ yacy_version_minor }}"
+yacy_download_file: "{{ yacy_version }}.tar.gz"
+yacy_download_url: "https://download.yacy.net/yacy_v{{ yacy_download_file }}"

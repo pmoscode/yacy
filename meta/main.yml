@@ -1,0 +1,29 @@
+galaxy_info:
+  role_name: yacy
+  namespace: pmoscode
+  author: pmoscode
+  description: Role which installs Yacy - the distributed search engine.
+
+  license: MIT
+
+  min_ansible_version: 2.1
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+        - bionic
+
+    - name: Debian
+      versions:
+        - bullseye
+        - buster
+
+  galaxy_tags:
+    - ubuntu
+    - debian
+    - yacy
+    - search
+    - distributed
+
+dependencies: [ ]
