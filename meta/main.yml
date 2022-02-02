@@ -2,7 +2,7 @@ galaxy_info:
   role_name: yacy
   namespace: pmoscode
   author: pmoscode
-  description: Role which installs Yacy - the distributed search engine.
+  description: Role which installs Yacy - a distributed Web Search Engine, based on a peer-to-peer network.
 
   license: MIT
 
