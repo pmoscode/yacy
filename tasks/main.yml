@@ -48,6 +48,12 @@
     remote_src: true
     extra_opts: "--strip-components=1"
 
+- name: Set admin password
+  shell:
+    cmd: "./passwd.sh {{ yacy_admin_password }}"
+    chdir: "{{ yacy_install_dir }}/bin"
+  when: yacy_admin_password
+
 - name: Write Systemd Unit file
   template:
     src: yacy.service.j2

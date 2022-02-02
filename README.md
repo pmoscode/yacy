@@ -11,15 +11,16 @@ For more documentation, see: https://yacy.net/download_installation/  (ex. Setti
 Role Variables
 --------------
 
-| Parameter          | Default           | Description                 |
-|--------------------|-------------------|-----------------------------|
-| yacy_service       | yacy              | Name of the systemd service |
-| yacy_version_major | 1.924             | Major version of YaCy       |
-| yacy_version_minor | 20210209_10069    | Minor version of YaCy       |
-| yacy_user          | yacy              | User YaCy runs with         |
-| yacy_user_shell    | /usr/sbin/nologin | User shell                  |
-| yacy_group         | yacy              | User group                  |
-| yacy_install_dir   | /opt/yacy         | Where to install YaCy       |
+| Parameter           | Default           | Description                                                                                                           |
+|---------------------|-------------------|-----------------------------------------------------------------------------------------------------------------------|
+| yacy_service        | yacy              | Name of the systemd service                                                                                           |
+| yacy_version_major  | 1.924             | Major version of YaCy                                                                                                 |
+| yacy_version_minor  | 20210209_10069    | Minor version of YaCy                                                                                                 |
+| yacy_user           | yacy              | User YaCy runs with                                                                                                   |
+| yacy_user_shell     | /usr/sbin/nologin | User shell                                                                                                            |
+| yacy_group          | yacy              | User group                                                                                                            |
+| yacy_install_dir    | /opt/yacy         | Where to install YaCy                                                                                                 |
+| yacy_admin_password |                   | The admin password for YaCy UI <br/>(default none - so you will get an error if you are trying to access it remotely) |
 
 
 Dependencies
