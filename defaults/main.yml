@@ -6,3 +6,4 @@ yacy_user: "yacy"
 yacy_user_shell: "/usr/sbin/nologin"
 yacy_group: "yacy"
 yacy_install_dir: "/opt/yacy"
+yacy_admin_password:
