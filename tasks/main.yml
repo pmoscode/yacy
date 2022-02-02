@@ -48,12 +48,6 @@
     remote_src: true
     extra_opts: "--strip-components=1"
 
-#- name: Modify port
-#  lineinfile:
-#    path: "{{ yacy_install_dir }}/.env"
-#    regexp: "PORT="
-#    line: "PORT={{ yacy_port }}"
-
 - name: Write Systemd Unit file
   template:
     src: yacy.service.j2
